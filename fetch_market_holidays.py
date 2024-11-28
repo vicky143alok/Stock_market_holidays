@@ -32,8 +32,8 @@ def fetch_stock_holidays_and_notify():
         # Send the request
         response = requests.post(webhook_url, json=payload, headers=headers)
         
-        if response.status_code == 200:
-            print("Notification sent successfully to Microsoft Teams.")
+        if response.status_code in [200, 204]:
+             print(f"Notification sent successfully. Status code: {response.status_code}")
         else:
             print(f"Failed to send notification. Status code: {response.status_code}")
 
